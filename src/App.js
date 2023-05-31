@@ -1,8 +1,36 @@
+// router
+import { Routes, Route } from 'react-router-dom';
+// pages
+import HomePage from './components/pages/HomePage/HomePage';
+import TablePage from './components/pages/TablePage/TablePage';
+import NotFoundPage from './components/pages/NotFoundPage/NotFoundPage';
+// views
+import Header from './components/views/Header/Header';
+import Footer from './components/views/Footer/Footer';
+// bootstrap
+import { Container } from 'react-bootstrap';
+// redux
+import { fetchTables } from './redux/tablesRedux';
+import { useDispatch } from 'react-redux';
+// react
+import { useEffect } from 'react';
+
 const App = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => dispatch(fetchTables()), [dispatch]);
+
   return (
-    <div className="App">
-      React Waiter App
-    </div>
+    <Container>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/table/:id" element={<TablePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <Footer />
+    </Container>
   );
 }
 
