@@ -1,0 +1,12 @@
+{
+  "tables": [
+    {
+      "id": 1,
+      "status": "reserved"
+    },
+    {
+      "id": 2,
+      "status": "free"
+    }
+  ]
+}
