@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 // pages
 import HomePage from './components/pages/HomePage/HomePage';
 import TablePage from './components/pages/TablePage/TablePage';
+import TableAddPage from './components/pages/TableAddPage/TableAddPage';
 import NotFoundPage from './components/pages/NotFoundPage/NotFoundPage';
 // views
 import Header from './components/views/Header/Header';
@@ -27,6 +28,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/table/:id" element={<TablePage />} />
+        <Route path="/table/add" element={<TableAddPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
