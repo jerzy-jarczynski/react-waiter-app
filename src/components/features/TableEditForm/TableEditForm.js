@@ -1,10 +1,14 @@
 // components
 import TableForm from "../TableForm/TableForm";
 
-const TableEditForm = () => {
+const TableEditForm = ({ tableId }) => {
+
+  const handleSubmit = (table) => {
+    console.log(table);
+  };
 
   return (
-    <TableForm />
+    <TableForm tableId={tableId} action={handleSubmit} actionText="Update" />
   );
 
 };

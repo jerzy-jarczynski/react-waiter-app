@@ -12,7 +12,7 @@ const TablePage = () => {
       <h1 className="pb-3">
         { `Table ${id}` }
       </h1>
-      <TableEditForm />
+      <TableEditForm tableId={id} />
     </>
   );
 
