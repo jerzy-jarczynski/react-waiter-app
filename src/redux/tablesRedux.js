@@ -55,6 +55,7 @@ export const removeTableRequest = (tableId) => {
         }
       })
       .then(() => dispatch(removeTable(tableId)))
+      .then(() => dispatch(fetchTables()))
       .catch(error => {
         console.log(`Error occurred while removing Table #${tableId}`, error);
       });
@@ -79,6 +80,7 @@ export const addTableRequest = (newTable) => {
         }
       })
       .then(() => dispatch(addTable(newTable)))
+      .then(() => dispatch(fetchTables()))
       .catch(error => {
         console.log(`Error occurred while adding Table #${newTable.id}`, error);
       });
@@ -103,6 +105,7 @@ export const changeTableRequest = (changedTable) => {
       }
     })
     .then(() => dispatch(changeTable(changedTable)))
+    .then(() => dispatch(fetchTables()))
     .catch(error => {
       console.log(`Error occurred while changing Table #${changedTable.id}`, error);
     });
