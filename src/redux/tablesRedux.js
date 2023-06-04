@@ -1,3 +1,5 @@
+import { API_URL } from "../config";
+
 // selectors
 export const getAllTables = state => state.tables;
 export const getTableById = ({tables}, tableId) => tables.find(table => table.id === tableId);
@@ -18,14 +20,14 @@ export const updateTableData = payload => ({ type: UPDATE_TABLE_DATA, payload })
 export const changeTable = payload => ({ type: CHANGE_TABLE, payload });
 export const fetchTables = () => {
   return (dispatch) => {
-    fetch('http://localhost:3131/api/tables')
+    fetch(`${API_URL}/tables`)
       .then(res => res.json())
       .then(tables => dispatch(updateTables(tables)));
   };
 };
 export const fetchTableDataRequest = (tableId) => {
   return (dispatch) => {
-    fetch(`http://localhost:3131/api/tables/${tableId}`)
+    fetch(`${API_URL}/tables/${tableId}`)
       .then(res => res.json())
       .then(data => {
         dispatch(updateTableData(data)); // Dispatch the action to update the state with the table data
@@ -44,7 +46,7 @@ export const removeTableRequest = (tableId) => {
       }
     };
 
-    fetch(`http://localhost:3131/api/tables/${tableId}`, options)
+    fetch(`${API_URL}/tables/${tableId}`, options)
       .then(response => {
         if (response.ok) {
           console.log(`Table #${tableId} removed succesfully`);
@@ -68,7 +70,7 @@ export const addTableRequest = (newTable) => {
       body: JSON.stringify(newTable),
     };
 
-    fetch('http://localhost:3131/api/tables', options)
+    fetch(`${API_URL}/tables`, options)
       .then(response => {
         if (response.ok) {
           console.log(`Table #${newTable.id} added succesfully`);
@@ -92,7 +94,7 @@ export const changeTableRequest = (changedTable) => {
       body: JSON.stringify(changedTable),
     };
 
-    fetch(`http://localhost:3131/api/tables/${changedTable.id}`, options)
+    fetch(`${API_URL}/tables/${changedTable.id}`, options)
     .then(response => {
       if (response.ok) {
         console.log(`Table #${changedTable.id} changed succesfully`);
