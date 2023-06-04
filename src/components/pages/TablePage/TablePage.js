@@ -9,7 +9,7 @@ const TablePage = () => {
 
   return (
     <>
-      <h1>
+      <h1 className="pb-3">
         { `Table ${id}` }
       </h1>
       <TableEditForm />
