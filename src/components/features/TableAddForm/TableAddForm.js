@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 import { addTableRequest } from "../../../redux/tablesRedux";
 // router
 import { useNavigate } from "react-router-dom";
+import NewTableId from "../NewTableId/NewTableId";
 
 const TableAddForm = ({ newTableId }) => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,7 +19,6 @@ const TableAddForm = ({ newTableId }) => {
   return (
     <TableForm tableId={newTableId} action={handleSubmit} actionText="Add table" />
   );
-
 };
 
 export default TableAddForm;

@@ -7,12 +7,14 @@ const TablePage = () => {
 
   const { id } = useParams();
 
+  const numId = parseInt(id, 10);
+
   return (
     <>
       <h1 className="pb-3">
         { `Table ${id}` }
       </h1>
-      <TableEditForm tableId={id} />
+      <TableEditForm tableId={numId} />
     </>
   );
 

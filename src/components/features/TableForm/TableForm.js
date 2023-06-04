@@ -8,14 +8,15 @@ import PropTypes from 'prop-types';
 const TableForm = ({ tableId, action, actionText, ...props }) => {
 
   // local state
-  const [id] = useState(props.tableId);
+  const [id] = useState(tableId);
   const [status, setStatus] = useState(props.status || 'Free');
   const [peopleAmount, setPeopleAmount] = useState(props.peopleAmount || 0);
   const [maxPeopleAmount, setMaxPeopleAmount] = useState(props.maxPeopleAmount || 0);
   const [bill, setBill] = useState(props.bill || 0);
 
   // form submit
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     action({ id, status, peopleAmount, maxPeopleAmount, bill });
   };
 
@@ -89,7 +90,7 @@ const TableForm = ({ tableId, action, actionText, ...props }) => {
                 <Col className="text-center" style={{ width: 'auto', maxWidth: 'auto', flex: '0 0', paddingRight: '0' }}>
                   { '$' }
                 </Col>
-                <Col xs={3} sm={2}>
+                <Col xs={4} sm={3}>
                   <Form.Control type="number" value={bill} onChange={e => setBill(e.target.value)} />
                 </Col>
               </Row>
@@ -109,9 +110,9 @@ TableForm.propTypes = {
   actionText: PropTypes.string.isRequired,
   tableId: PropTypes.number.isRequired,
   status: PropTypes.string,
-  peopleAmount: PropTypes.number,
-  maxPeopleAmount: PropTypes.number,
-  bill: PropTypes.number,
+  peopleAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  maxPeopleAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  bill: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default TableForm;
